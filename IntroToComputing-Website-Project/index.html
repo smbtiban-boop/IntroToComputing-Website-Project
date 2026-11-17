@@ -1,0 +1,339 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+
+    <title>MyCampus Student Dashboard</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="MyCampus - a student dashboard prototype" />
+    <meta name="keywords" content="MyCampus, student, dashboard, grades, profile" />
+    <meta name="author" content="Mosallama B. Tiban" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base target="_self" />
+
+    <link rel="icon" type="image/png" href="images/favicon-home.png?v=2" sizes="64x64" />
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <style type="text/css">
+        .note {
+            color: #4a2f8f;
+            font-style: italic;
+        }
+    </style>
+
+    <script type="text/javascript">
+        console.log("MyCampus loaded");
+    </script>
+</head>
+
+<body>
+
+    <div id="topbar">
+        <div class="dropdown">
+            <button type="button" class="btn small">Quick links &#9662;</button>
+            <div class="dropdown-content">
+                <a href="#profile">Profile</a>
+                <a href="#grades">Grades</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        <button type="button" id="darkBtn" class="btn small" onclick="toggleDark()">Dark mode</button>
+    </div>
+
+    <div id="page">
+
+        <div id="sidebar">
+            <div class="brand">MyCampus</div>
+            <div class="who">Mosallama B. Tiban</div>
+            <ul id="nav-list">
+                <li><a href="#home" class="active"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" viewBox="0 0 24 24" fill="#ffffff">
+                                <path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z" />
+                            </svg></span><span>Home</span></a></li>
+                <li><a href="#profile"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 24 24" fill="#ffffff">
+                                <circle cx="12" cy="8" r="4.5" />
+                                <path d="M3.5 21c0-4.7 3.8-7.5 8.5-7.5s8.5 2.8 8.5 7.5z" />
+                            </svg></span><span>Profile</span></a></li>
+                <li><a href="#dashboard"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                height="16" viewBox="0 0 24 24" fill="#ffffff">
+                                <rect x="3" y="3" width="8" height="8" rx="1.5" />
+                                <rect x="13" y="3" width="8" height="8" rx="1.5" />
+                                <rect x="3" y="13" width="8" height="8" rx="1.5" />
+                                <rect x="13" y="13" width="8" height="8" rx="1.5" />
+                            </svg></span><span>Dashboard</span></a></li>
+                <li><a href="#grades"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 24 24" fill="#ffffff">
+                                <rect x="3" y="12" width="5" height="9" rx="1" />
+                                <rect x="10" y="7" width="5" height="14" rx="1" />
+                                <rect x="17" y="3" width="5" height="18" rx="1" />
+                            </svg></span><span>Grades</span></a></li>
+                <li><a href="#media"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 24 24" fill="#ffffff">
+                                <path d="M6 4v16l14-8z" />
+                            </svg></span><span>Media</span></a></li>
+                <li><a href="#contact"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 24 24" fill="#ffffff">
+                                <path d="M3 5h18v14H3z M3 6l9 7 9-7" fill="none" stroke="#fff" stroke-width="2" />
+                            </svg></span><span>Contact</span></a></li>
+                <li><a href="#theme"><span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 24 24" fill="#ffffff">
+                                <circle cx="12" cy="12" r="8.5" fill="none" stroke="#ffffff" stroke-width="2.5" />
+                                <path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="#ffffff" />
+                            </svg></span><span>Theme Settings</span></a></li>
+            </ul>
+        </div>
+
+        <div id="main">
+            <div id="content">
+
+                <div class="alert" id="alert">
+                    <span class="closebtn" onclick="closeAlert()">&#215;</span>
+                    <strong>Reminder:</strong> Your changes are saved in this browser.
+                </div>
+
+                <div id="home" class="section">
+                    <div class="hero">
+                        <h1>Welcome back, <span class="highlight">Mosallama</span>!</h1>
+                        <p>MyCampus keeps your academic information in one simple place.</p>
+                    </div>
+
+                    <img id="banner" src="images/banner.png" alt="MyCampus banner" />
+                    <div class="panel">
+                        <h2>What you can do here</h2>
+                        <ul>
+                            <li>Update your details in <a href="#profile">Profile</a>.</li>
+                            <li>See your GPA, credits, and classes in <a href="#dashboard">Dashboard</a>.</li>
+                            <li>Add, edit, or delete subjects in <a href="#grades">Grades</a>.</li>
+                            <li>Watch videos in <a href="#media">Media</a> or send a message in <a href="#contact">Contact</a>.</li>
+                        </ul>
+                        <p class="note">Your changes are saved in this browser on this device.</p>
+                        <!-- Challenge #6: inline CSS -->
+                        <p style="color: #6f4fc0; font-weight: bold;">Inline CSS example: this line uses the style attribute.
+                        </p>
+                    </div>
+                </div>
+
+                <div id="profile" class="section">
+                    <h1>Profile</h1>
+                    <div class="panel">
+                        <h2 id="profileName">Mosallama B. Tiban</h2>
+                        <p>BS Computer Science</p>
+                        <dl>
+                            <dt>University</dt>
+                            <dd>University of Southern Mindanao</dd>
+                            <dt>Year level</dt>
+                            <dd id="profileYear">-</dd>
+                            <dt>Email</dt>
+                            <dd id="profileEmail">-</dd>
+                        </dl>
+
+                        <button type="button" class="btn" onclick="openModal()">Edit profile</button>
+                    </div>
+                </div>
+
+                <div id="dashboard" class="section">
+                    <h1>Dashboard</h1>
+                    <div class="cards">
+                        <div class="card">
+                            <div class="label">GPA (1.00 is highest)</div>
+                            <div class="value" id="gpaValue">1.75</div>
+                        </div>
+                        <div class="card">
+                            <div class="label">Total credits</div>
+                            <div class="value" id="creditsValue">9</div>
+                        </div>
+                        <div class="card">
+                            <div class="label">Enrolled classes</div>
+                            <div class="value" id="classesValue">3</div>
+                        </div>
+                        <div class="card">
+                            <div class="label">Standing</div>
+                            <div class="value" id="standingValue">Excellent</div>
+                        </div>
+                    </div>
+
+                    <div class="panel">
+                        <!-- Challenge #11: progress bar -->
+                        <h2>Credits completed</h2>
+                        <div class="progress">
+                            <div class="bar" id="bar">0%</div>
+                        </div>
+
+                        <div class="tab">
+                            <button type="button" class="tablink active" onclick="openTab(event, 'Scale')">GPA
+                                scale</button>
+                            <button type="button" class="tablink" onclick="openTab(event, 'Standing')">Standing</button>
+                        </div>
+                        <div id="Scale" class="tabcontent" style="display: block;">
+                            <ul>
+                                <li>1.00 to 1.75: Excellent</li>
+                                <li>1.76 to 2.50: Good</li>
+                                <li>2.51 to 3.00: Passing</li>
+                                <li>Above 3.00: Needs attention</li>
+                            </ul>
+                        </div>
+                        <div id="Standing" class="tabcontent">
+                            <p>Your standing is based on your credit-weighted GPA.</p>
+                        </div>
+
+                        <button type="button" class="collapsible">How is my GPA computed?</button>
+                        <div class="collapse-content">
+                            <p>GPA is weighted by credits. Add or edit subjects in Grades and the numbers update.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="grades" class="section">
+                    <h1>Grades</h1>
+                    <div class="panel">
+                        <h2>Subject records</h2>
+                        <!-- Challenge #12: filter table -->
+                        <input type="text" id="search" onkeyup="filterTable()" placeholder="Search subjects..." />
+                        <table id="gradesTable" summary="Subjects with course code, name, credits, and grade">
+                            <caption>Your subjects. Click a heading to sort.</caption>
+                            <thead>
+                                <tr>
+
+                                    <th class="sortable" onclick="sortTable(0)">Code</th>
+                                    <th class="sortable" onclick="sortTable(1)">Subject</th>
+                                    <th class="sortable" onclick="sortTable(2)">Credits</th>
+                                    <th class="sortable" onclick="sortTable(3)">Grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>CS 101</td>
+                                    <td>Introduction to Computing</td>
+                                    <td>3</td>
+                                    <td>1.50</td>
+                                </tr>
+                                <tr>
+                                    <td>CS 102</td>
+                                    <td>Computer Programming 1</td>
+                                    <td>3</td>
+                                    <td>1.75</td>
+                                </tr>
+                                <tr>
+                                    <td>MATH 101</td>
+                                    <td>College Algebra</td>
+                                    <td>3</td>
+                                    <td>2.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel">
+                        <h2>Add a subject</h2>
+                        <form action="#" method="post" onsubmit="return addSubject();">
+                            <div>
+                                <label for="g-code">Course code (example: CS 101)</label>
+                                <input id="g-code" name="code" type="text" maxlength="20" />
+                                <label for="g-subject">Subject name</label>
+                                <input id="g-subject" name="subject" type="text" maxlength="60" />
+                                <label for="g-credits">Credits (1 to 6)</label>
+                                <input id="g-credits" name="credits" type="text" maxlength="1" />
+                                <label for="g-grade">Grade (1.00 to 5.00)</label>
+                                <input id="g-grade" name="grade" type="text" maxlength="4" />
+                                <input class="btn" type="submit" value="Add subject" />
+                            </div>
+                        </form>
+                        <p id="grade-msg" class="msg"></p>
+                    </div>
+                </div>
+                <div id="media" class="section">
+                    <h1>Media</h1>
+                    <div class="panel">
+
+                        <h2>Local video (mp4)</h2>
+                        <video width="560" height="315" controls="controls">
+            <source src="video/welcome.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+
+                    </div>
+                    <div class="panel">
+                        <h2>Embedded video (iframe)</h2>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen="allowfullscreen"></iframe>
+                    </div>
+                </div>
+
+                <div id="contact" class="section">
+                    <h1>Contact</h1>
+                    <div class="panel">
+                        <form action="#" method="post" onsubmit="alert('Message sent!'); return false;">
+                            <div>
+                                <label for="c-name">Full name</label>
+                                <input id="c-name" name="name" type="text" />
+                                <label for="c-email">Email</label>
+                                <input id="c-email" name="email" type="text" />
+                                <label for="c-subject">Subject</label>
+                                <select id="c-subject" name="subject">
+                                    <option value="question">Question</option>
+                                    <option value="feedback">Feedback</option>
+                                    <option value="problem">Problem</option>
+                                </select>
+                                <label for="c-message">Message</label>
+                                <textarea id="c-message" name="message" rows="5" cols="40"></textarea>
+                                <input class="btn" type="submit" value="Send message" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="theme" class="section">
+                    <h1>Theme Settings</h1>
+                    <div class="panel">
+                        <h2>Choose a theme</h2>
+                        <button type="button" class="btn" onclick="setTheme('')">Lavender (default)</button>
+                        <button type="button" class="btn" onclick="setTheme('light')">Light</button>
+                        <button type="button" class="btn" onclick="setTheme('dark')">Dark</button>
+                    </div>
+                    <div class="panel">
+                        <h2>Saved data</h2>
+                        <p>Your subjects, profile, and theme are saved in this browser.</p>
+                        <button type="button" class="btn" onclick="resetData()">Reset saved data</button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div id="footer">MyCampus Student Dashboard - prototype</div>
+        </div>
+
+    </div>
+
+    <div id="modal" class="modal" style="display: none;">
+
+        <div class="modal-content">
+            <span class="closebtn dark-x" onclick="closeModal()">&#215;</span>
+            <h2>Edit profile</h2>
+            <form action="#" method="post" onsubmit="return saveProfile();">
+                <div>
+                    <label for="p-name">Full name</label>
+                    <input id="p-name" name="name" type="text" />
+                    <label for="p-year">Year level</label>
+                    <select id="p-year" name="year">
+                        <option value="1st Year">1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                    </select>
+                    <label for="p-email">Email</label>
+                    <input id="p-email" name="email" type="text" />
+                    <input class="btn" type="submit" value="Save profile" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <button type="button" id="topBtn" onclick="goTop()">Top</button>
+
+    <script type="text/javascript" src="script/script.js"></script>
+</body>
+
+</html>
